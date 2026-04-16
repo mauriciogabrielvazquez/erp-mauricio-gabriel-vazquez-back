@@ -2,12 +2,84 @@ require('dotenv').config();
 const Fastify = require('fastify');
 const { createClient } = require('@supabase/supabase-js');
 
+// Quitamos el ignoreTrailingSlash para evitar la advertencia amarilla
 const fastify = Fastify({ logger: true });
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 
-const formatResponse = (statusCode, intOpCode, data) => {
-    return { statusCode, intOpCode, data };
+const formatResponse = (statusCode, intOpCode, data) => ({ statusCode, intOpCode, data });
+
+// ==========================================
+// MANEJADOR GLOBAL
+// ==========================================
+fastify.setErrorHandler(function (error, request, reply) {
+    if (error.validation) {
+        return reply.code(400).send(formatResponse(400, 'SxGR400', {
+            message: 'Error de validación de datos',
+            detalles: error.validation
+        }));
+    }
+    fastify.log.error(error);
+    return reply.code(error.statusCode || 500).send(formatResponse(error.statusCode || 500, 'SxGR500', { message: 'Error interno del servidor' }));
+});
+
+// ==========================================
+// JSON SCHEMAS
+// ==========================================
+const createGroupSchema = {
+    body: {
+        type: 'object',
+        required: ['nombre'],
+        properties: {
+            nombre: { type: 'string', minLength: 1 },
+            descripcion: { type: 'string' },
+            categoria: { type: 'string' },
+            nivel: { type: 'string' },
+            profesor: { type: 'string' },
+            imagen_url: { type: 'string' }
+        }
+    }
 };
+
+const updateGroupSchema = {
+    body: {
+        type: 'object',
+        properties: {
+            nombre: { type: 'string', minLength: 1 },
+            descripcion: { type: 'string' },
+            categoria: { type: 'string' },
+            nivel: { type: 'string' },
+            profesor: { type: 'string' },
+            imagen_url: { type: 'string' }
+        },
+        minProperties: 1 
+    }
+};
+
+const assignMemberSchema = {
+    body: {
+        type: 'object',
+        required: ['usuario_id'],
+        properties: {
+            usuario_id: { type: 'string', format: 'uuid' }
+        }
+    }
+};
+
+// ESQUEMA ACTUALIZADO: Ahora acepta un arreglo de permisos
+const assignPermissionSchema = {
+    body: {
+        type: 'object',
+        required: ['usuario_id', 'permisos'],
+        properties: {
+            usuario_id: { type: 'string', format: 'uuid' },
+            permisos: { type: 'array', items: { type: 'string' } }
+        }
+    }
+};
+
+// ==========================================
+// RUTAS
+// ==========================================
 
 fastify.get('/groups', async (request, reply) => {
     try {
@@ -18,14 +90,13 @@ fastify.get('/groups', async (request, reply) => {
             .from('grupo_miembros')
             .select(`
                 fecha_unido,
-                grupos ( id, nombre, descripcion, creador_id, creado_en )
+                grupos ( id, nombre, descripcion, categoria, nivel, profesor, imagen_url, creador_id, creado_en )
             `)
             .eq('usuario_id', userId);
 
         if (error) throw error;
 
         const gruposFormateados = data.map(item => item.grupos);
-
         return reply.code(200).send(formatResponse(200, 'SxGR200', gruposFormateados));
 
     } catch (error) {
@@ -34,17 +105,16 @@ fastify.get('/groups', async (request, reply) => {
     }
 });
 
-fastify.post('/groups', async (request, reply) => {
+fastify.post('/groups', { schema: createGroupSchema }, async (request, reply) => {
     try {
         const userId = request.headers['x-user-id'];
         if (!userId) return reply.code(403).send(formatResponse(403, 'SxGR403', { message: 'Usuario no identificado' }));
 
-        const { nombre, descripcion } = request.body;
-        if (!nombre) return reply.code(400).send(formatResponse(400, 'SxGR400', { message: 'El nombre es obligatorio' }));
-
+        const { nombre, descripcion, categoria, nivel, profesor, imagen_url } = request.body;
+        
         const { data: nuevoGrupo, error: grupoError } = await supabase
             .from('grupos')
-            .insert([{ nombre, descripcion, creador_id: userId }])
+            .insert([{ nombre, descripcion, categoria, nivel, profesor, imagen_url, creador_id: userId }])
             .select()
             .single();
 
@@ -64,28 +134,158 @@ fastify.post('/groups', async (request, reply) => {
     }
 });
 
-fastify.post('/groups/:id/permissions', async (request, reply) => {
+fastify.patch('/groups/:id', { schema: updateGroupSchema }, async (request, reply) => {
     try {
         const grupoId = request.params.id;
-        const { usuario_id, permiso_id } = request.body;
-
-        if (!usuario_id || !permiso_id) {
-            return reply.code(400).send(formatResponse(400, 'SxGR400', { message: 'Faltan datos' }));
-        }
+        const updates = request.body;
 
         const { data, error } = await supabase
+            .from('grupos')
+            .update(updates)
+            .eq('id', grupoId)
+            .select();
+
+        if (error) throw error;
+        if (data.length === 0) return reply.code(404).send(formatResponse(404, 'SxGR404', { message: 'Grupo no encontrado' }));
+
+        return reply.code(200).send(formatResponse(200, 'SxGR200', data[0]));
+
+    } catch (error) {
+        fastify.log.error(error);
+        return reply.code(500).send(formatResponse(500, 'SxGR500', { message: 'Error interno' }));
+    }
+});
+
+fastify.delete('/groups/:id', async (request, reply) => {
+    try {
+        const grupoId = request.params.id;
+
+        const { error } = await supabase
+            .from('grupos')
+            .delete()
+            .eq('id', grupoId);
+
+        if (error) throw error;
+
+        return reply.code(200).send(formatResponse(200, 'SxGR200', { message: 'Grupo eliminado correctamente' }));
+
+    } catch (error) {
+        fastify.log.error(error);
+        return reply.code(500).send(formatResponse(500, 'SxGR500', { message: 'Error interno' }));
+    }
+});
+
+// NUEVA RUTA: Para LEER los permisos de un usuario en un grupo
+fastify.get('/groups/:id/permissions/:userId', async (request, reply) => {
+    try {
+        const { id: grupoId, userId } = request.params;
+        
+        const { data, error } = await supabase
             .from('grupo_usuario_permisos')
-            .insert([{ grupo_id: grupoId, usuario_id: usuario_id, permiso_id: permiso_id }])
+            .select('permiso_id')
+            .match({ grupo_id: grupoId, usuario_id: userId });
+
+        if (error) throw error;
+
+        // Extraemos solo el texto de los permisos para enviarlo como un arreglo
+        const permisos = data.map(p => p.permiso_id);
+        return reply.code(200).send(formatResponse(200, 'SxGR200', permisos));
+
+    } catch (error) {
+        fastify.log.error(error);
+        return reply.code(500).send(formatResponse(500, 'SxGR500', { message: 'Error interno' }));
+    }
+});
+
+// RUTA ACTUALIZADA: Para GUARDAR (Sobrescribir) los permisos
+fastify.post('/groups/:id/permissions', { schema: assignPermissionSchema }, async (request, reply) => {
+    try {
+        const grupoId = request.params.id;
+        const { usuario_id, permisos } = request.body;
+
+        // 1. Borramos todos los permisos anteriores de este usuario en este grupo
+        await supabase.from('grupo_usuario_permisos')
+            .delete()
+            .match({ grupo_id: grupoId, usuario_id: usuario_id });
+
+        // 2. Si hay permisos nuevos, los insertamos
+        if (permisos && permisos.length > 0) {
+            const nuevosPermisos = permisos.map(p => ({
+                grupo_id: grupoId,
+                usuario_id: usuario_id,
+                permiso_id: p
+            }));
+            const { error: insertError } = await supabase.from('grupo_usuario_permisos').insert(nuevosPermisos);
+            if (insertError) throw insertError;
+        }
+
+        return reply.code(200).send(formatResponse(200, 'SxGR200', { message: 'Permisos de grupo actualizados' }));
+
+    } catch (error) {
+        fastify.log.error(error);
+        return reply.code(500).send(formatResponse(500, 'SxGR500', { message: 'Error interno' }));
+    }
+});
+
+fastify.get('/groups/:id/members', async (request, reply) => {
+    try {
+        const grupoId = request.params.id;
+        
+        const { data, error } = await supabase
+            .from('grupo_miembros')
+            .select(`
+                usuarios ( id, username, email, nombre_completo )
+            `)
+            .eq('grupo_id', grupoId);
+
+        if (error) throw error;
+
+        const miembros = data.map(item => item.usuarios).filter(u => u !== null);
+        return reply.code(200).send(formatResponse(200, 'SxGR200', miembros));
+
+    } catch (error) {
+        fastify.log.error(error);
+        return reply.code(500).send(formatResponse(500, 'SxGR500', { message: 'Error interno' }));
+    }
+});
+
+fastify.post('/groups/:id/members', { schema: assignMemberSchema }, async (request, reply) => {
+    try {
+        const grupoId = request.params.id;
+        const { usuario_id } = request.body;
+
+        const { data, error } = await supabase
+            .from('grupo_miembros')
+            .insert([{ grupo_id: grupoId, usuario_id }])
             .select();
 
         if (error) {
             if (error.code === '23505') {
-                return reply.code(400).send(formatResponse(400, 'SxGR400', { message: 'El usuario ya tiene este permiso en este grupo' }));
+                return reply.code(400).send(formatResponse(400, 'SxGR400', { message: 'El usuario ya pertenece a este grupo' }));
             }
             throw error;
         }
 
-        return reply.code(201).send(formatResponse(201, 'SxGR201', { message: 'Permiso asignado correctamente', data }));
+        return reply.code(201).send(formatResponse(201, 'SxGR201', { message: 'Alumno añadido' }));
+
+    } catch (error) {
+        fastify.log.error(error);
+        return reply.code(500).send(formatResponse(500, 'SxGR500', { message: 'Error interno' }));
+    }
+});
+
+fastify.delete('/groups/:id/members/:userId', async (request, reply) => {
+    try {
+        const { id: grupoId, userId } = request.params;
+
+        const { error } = await supabase
+            .from('grupo_miembros')
+            .delete()
+            .match({ grupo_id: grupoId, usuario_id: userId });
+
+        if (error) throw error;
+
+        return reply.code(200).send(formatResponse(200, 'SxGR200', { message: 'Alumno removido del grupo' }));
 
     } catch (error) {
         fastify.log.error(error);

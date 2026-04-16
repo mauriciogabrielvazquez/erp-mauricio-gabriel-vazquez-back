@@ -1,0 +1,122 @@
+{"level":30,"time":1776367531714,"pid":15140,"hostname":"DESKTOP-640V4IJ","msg":"Server listening at http://[::1]:3000"}
+{"level":30,"time":1776367531722,"pid":15140,"hostname":"DESKTOP-640V4IJ","msg":"Server listening at http://127.0.0.1:3000"}
+{"level":30,"time":1776367849777,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-1","req":{"method":"OPTIONS","url":"/auth/login","host":"localhost:3000","remoteAddress":"::1","remotePort":50363},"msg":"incoming request"}
+{"level":30,"time":1776367849784,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-1","res":{"statusCode":204},"responseTime":6.358199999900535,"msg":"request completed"}
+{"level":30,"time":1776367849785,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-2","req":{"method":"POST","url":"/auth/login","host":"localhost:3000","remoteAddress":"::1","remotePort":50363},"msg":"incoming request"}
+{"level":30,"time":1776367849789,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-2","source":"/auth/login","msg":"fetching from remote server"}
+{"level":30,"time":1776367851862,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-2","msg":"response received"}
+{"level":30,"time":1776367851867,"pid":15140,"hostname":"DESKTOP-640V4IJ","msg":"✅ ÉXITO: [POST] /auth/login - Status: 200 - Usuario: Visitante/Anónimo - Tiempo: 2082.24ms"}
+{"level":30,"time":1776367851868,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-2","res":{"statusCode":200},"responseTime":2082.2765000001527,"msg":"request completed"}
+{"level":30,"time":1776367852114,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-3","req":{"method":"OPTIONS","url":"/groups","host":"localhost:3000","remoteAddress":"::1","remotePort":50363},"msg":"incoming request"}
+{"level":30,"time":1776367852115,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-3","res":{"statusCode":204},"responseTime":0.6170999999158084,"msg":"request completed"}
+{"level":30,"time":1776367852117,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-4","req":{"method":"GET","url":"/groups","host":"localhost:3000","remoteAddress":"::1","remotePort":50363},"msg":"incoming request"}
+{"level":30,"time":1776367852126,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-4","source":"/groups","msg":"fetching from remote server"}
+{"level":30,"time":1776367852128,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-5","req":{"method":"OPTIONS","url":"/users","host":"localhost:3000","remoteAddress":"::1","remotePort":50370},"msg":"incoming request"}
+{"level":30,"time":1776367852128,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-5","res":{"statusCode":204},"responseTime":0.4564000000245869,"msg":"request completed"}
+{"level":30,"time":1776367852130,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-6","req":{"method":"GET","url":"/users","host":"localhost:3000","remoteAddress":"::1","remotePort":50370},"msg":"incoming request"}
+{"level":30,"time":1776367852132,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-6","source":"/users","msg":"fetching from remote server"}
+{"level":30,"time":1776367852242,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-6","msg":"response received"}
+{"level":30,"time":1776367852243,"pid":15140,"hostname":"DESKTOP-640V4IJ","msg":"✅ ÉXITO: [GET] /users - Status: 200 - Usuario: 4de164df-1fbf-4a22-9b3b-8719697a4e7e - Tiempo: 113.22ms"}
+{"level":30,"time":1776367852243,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-6","res":{"statusCode":200},"responseTime":113.24589999997988,"msg":"request completed"}
+{"level":30,"time":1776367852518,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-4","msg":"response received"}
+{"level":30,"time":1776367852519,"pid":15140,"hostname":"DESKTOP-640V4IJ","msg":"✅ ÉXITO: [GET] /groups - Status: 200 - Usuario: 4de164df-1fbf-4a22-9b3b-8719697a4e7e - Tiempo: 401.76ms"}
+{"level":30,"time":1776367852519,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-4","res":{"statusCode":200},"responseTime":401.9525999999605,"msg":"request completed"}
+{"level":30,"time":1776367857028,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-7","req":{"method":"GET","url":"/groups","host":"localhost:3000","remoteAddress":"::1","remotePort":50363},"msg":"incoming request"}
+{"level":30,"time":1776367857030,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-7","source":"/groups","msg":"fetching from remote server"}
+{"level":30,"time":1776367857392,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-7","msg":"response received"}
+{"level":30,"time":1776367857393,"pid":15140,"hostname":"DESKTOP-640V4IJ","msg":"✅ ÉXITO: [GET] /groups - Status: 200 - Usuario: 4de164df-1fbf-4a22-9b3b-8719697a4e7e - Tiempo: 364.14ms"}
+{"level":30,"time":1776367857393,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-7","res":{"statusCode":200},"responseTime":364.2379999998957,"msg":"request completed"}
+{"level":30,"time":1776367857397,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-8","req":{"method":"OPTIONS","url":"/tickets/group/8015e25e-a8d3-4601-8e82-6cd2c81108c9","host":"localhost:3000","remoteAddress":"::1","remotePort":50363},"msg":"incoming request"}
+{"level":30,"time":1776367857397,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-8","res":{"statusCode":204},"responseTime":0.5248000000137836,"msg":"request completed"}
+{"level":30,"time":1776367857399,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-9","req":{"method":"OPTIONS","url":"/tickets/group/3d63b0a7-be9d-4118-957f-964fa9858829","host":"localhost:3000","remoteAddress":"::1","remotePort":50370},"msg":"incoming request"}
+{"level":30,"time":1776367857399,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-9","res":{"statusCode":204},"responseTime":0.35489999991841614,"msg":"request completed"}
+{"level":30,"time":1776367857408,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-a","req":{"method":"GET","url":"/tickets/group/3d63b0a7-be9d-4118-957f-964fa9858829","host":"localhost:3000","remoteAddress":"::1","remotePort":50370},"msg":"incoming request"}
+{"level":30,"time":1776367857410,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-a","source":"/tickets/group/3d63b0a7-be9d-4118-957f-964fa9858829","msg":"fetching from remote server"}
+{"level":30,"time":1776367857411,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-b","req":{"method":"GET","url":"/tickets/group/8015e25e-a8d3-4601-8e82-6cd2c81108c9","host":"localhost:3000","remoteAddress":"::1","remotePort":50363},"msg":"incoming request"}
+{"level":30,"time":1776367857413,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-b","source":"/tickets/group/8015e25e-a8d3-4601-8e82-6cd2c81108c9","msg":"fetching from remote server"}
+{"level":30,"time":1776367857769,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-b","msg":"response received"}
+{"level":30,"time":1776367857770,"pid":15140,"hostname":"DESKTOP-640V4IJ","msg":"✅ ÉXITO: [GET] /tickets/group/8015e25e-a8d3-4601-8e82-6cd2c81108c9 - Status: 200 - Usuario: 4de164df-1fbf-4a22-9b3b-8719697a4e7e - Tiempo: 358.95ms"}
+{"level":30,"time":1776367857771,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-b","res":{"statusCode":200},"responseTime":358.9664000000339,"msg":"request completed"}
+{"level":30,"time":1776367857790,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-a","msg":"response received"}
+{"level":30,"time":1776367857791,"pid":15140,"hostname":"DESKTOP-640V4IJ","msg":"✅ ÉXITO: [GET] /tickets/group/3d63b0a7-be9d-4118-957f-964fa9858829 - Status: 200 - Usuario: 4de164df-1fbf-4a22-9b3b-8719697a4e7e - Tiempo: 382.71ms"}
+{"level":30,"time":1776367857791,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-a","res":{"statusCode":200},"responseTime":382.6883999998681,"msg":"request completed"}
+{"level":30,"time":1776367859861,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-c","req":{"method":"OPTIONS","url":"/groups/8015e25e-a8d3-4601-8e82-6cd2c81108c9/members","host":"localhost:3000","remoteAddress":"::1","remotePort":50370},"msg":"incoming request"}
+{"level":30,"time":1776367859862,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-c","res":{"statusCode":204},"responseTime":0.3734999999869615,"msg":"request completed"}
+{"level":30,"time":1776367859862,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-d","req":{"method":"GET","url":"/tickets/group/8015e25e-a8d3-4601-8e82-6cd2c81108c9","host":"localhost:3000","remoteAddress":"::1","remotePort":50363},"msg":"incoming request"}
+{"level":30,"time":1776367859865,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-d","source":"/tickets/group/8015e25e-a8d3-4601-8e82-6cd2c81108c9","msg":"fetching from remote server"}
+{"level":30,"time":1776367859870,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-e","req":{"method":"GET","url":"/groups/8015e25e-a8d3-4601-8e82-6cd2c81108c9/members","host":"localhost:3000","remoteAddress":"::1","remotePort":50370},"msg":"incoming request"}
+{"level":30,"time":1776367859872,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-e","source":"/groups/8015e25e-a8d3-4601-8e82-6cd2c81108c9/members","msg":"fetching from remote server"}
+{"level":30,"time":1776367859959,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-d","msg":"response received"}
+{"level":30,"time":1776367859960,"pid":15140,"hostname":"DESKTOP-640V4IJ","msg":"✅ ÉXITO: [GET] /tickets/group/8015e25e-a8d3-4601-8e82-6cd2c81108c9 - Status: 200 - Usuario: 4de164df-1fbf-4a22-9b3b-8719697a4e7e - Tiempo: 97.30ms"}
+{"level":30,"time":1776367859960,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-d","res":{"statusCode":200},"responseTime":97.3183999999892,"msg":"request completed"}
+{"level":30,"time":1776367859989,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-e","msg":"response received"}
+{"level":30,"time":1776367859990,"pid":15140,"hostname":"DESKTOP-640V4IJ","msg":"✅ ÉXITO: [GET] /groups/8015e25e-a8d3-4601-8e82-6cd2c81108c9/members - Status: 200 - Usuario: 4de164df-1fbf-4a22-9b3b-8719697a4e7e - Tiempo: 119.36ms"}
+{"level":30,"time":1776367859990,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-e","res":{"statusCode":200},"responseTime":119.37390000000596,"msg":"request completed"}
+{"level":30,"time":1776367864093,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-f","req":{"method":"OPTIONS","url":"/tickets/dc5eaf29-4165-41d1-9115-896ff6027c8f","host":"localhost:3000","remoteAddress":"::1","remotePort":50370},"msg":"incoming request"}
+{"level":30,"time":1776367864093,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-f","res":{"statusCode":204},"responseTime":0.2690999999176711,"msg":"request completed"}
+{"level":30,"time":1776367864197,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-g","req":{"method":"PATCH","url":"/tickets/dc5eaf29-4165-41d1-9115-896ff6027c8f","host":"localhost:3000","remoteAddress":"::1","remotePort":50370},"msg":"incoming request"}
+{"level":30,"time":1776367864200,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-g","source":"/tickets/dc5eaf29-4165-41d1-9115-896ff6027c8f","msg":"fetching from remote server"}
+{"level":30,"time":1776367864497,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-g","msg":"response received"}
+{"level":30,"time":1776367864499,"pid":15140,"hostname":"DESKTOP-640V4IJ","msg":"✅ ÉXITO: [PATCH] /tickets/dc5eaf29-4165-41d1-9115-896ff6027c8f - Status: 200 - Usuario: 4de164df-1fbf-4a22-9b3b-8719697a4e7e - Tiempo: 301.40ms"}
+{"level":30,"time":1776367864499,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-g","res":{"statusCode":200},"responseTime":301.4555999999866,"msg":"request completed"}
+{"level":30,"time":1776367864511,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-h","req":{"method":"OPTIONS","url":"/tickets/group/8015e25e-a8d3-4601-8e82-6cd2c81108c9","host":"localhost:3000","remoteAddress":"::1","remotePort":50370},"msg":"incoming request"}
+{"level":30,"time":1776367864512,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-h","res":{"statusCode":204},"responseTime":0.3951999999117106,"msg":"request completed"}
+{"level":30,"time":1776367864529,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-i","req":{"method":"GET","url":"/tickets/group/8015e25e-a8d3-4601-8e82-6cd2c81108c9","host":"localhost:3000","remoteAddress":"::1","remotePort":50370},"msg":"incoming request"}
+{"level":30,"time":1776367864532,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-i","source":"/tickets/group/8015e25e-a8d3-4601-8e82-6cd2c81108c9","msg":"fetching from remote server"}
+{"level":30,"time":1776367864642,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-i","msg":"response received"}
+{"level":30,"time":1776367864643,"pid":15140,"hostname":"DESKTOP-640V4IJ","msg":"✅ ÉXITO: [GET] /tickets/group/8015e25e-a8d3-4601-8e82-6cd2c81108c9 - Status: 200 - Usuario: 4de164df-1fbf-4a22-9b3b-8719697a4e7e - Tiempo: 113.30ms"}
+{"level":30,"time":1776367864643,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-i","res":{"statusCode":200},"responseTime":113.32129999995232,"msg":"request completed"}
+{"level":30,"time":1776367874096,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-j","req":{"method":"OPTIONS","url":"/groups","host":"localhost:3000","remoteAddress":"::1","remotePort":50370},"msg":"incoming request"}
+{"level":30,"time":1776367874097,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-j","res":{"statusCode":204},"responseTime":0.4263000001665205,"msg":"request completed"}
+{"level":30,"time":1776367874100,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-k","req":{"method":"GET","url":"/groups","host":"localhost:3000","remoteAddress":"::1","remotePort":50370},"msg":"incoming request"}
+{"level":30,"time":1776367874102,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-k","source":"/groups","msg":"fetching from remote server"}
+{"level":30,"time":1776367874380,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-k","msg":"response received"}
+{"level":30,"time":1776367874381,"pid":15140,"hostname":"DESKTOP-640V4IJ","msg":"✅ ÉXITO: [GET] /groups - Status: 200 - Usuario: 4de164df-1fbf-4a22-9b3b-8719697a4e7e - Tiempo: 281.03ms"}
+{"level":30,"time":1776367874381,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-k","res":{"statusCode":200},"responseTime":281.034200000111,"msg":"request completed"}
+{"level":30,"time":1776367874383,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-l","req":{"method":"OPTIONS","url":"/tickets/group/8015e25e-a8d3-4601-8e82-6cd2c81108c9","host":"localhost:3000","remoteAddress":"::1","remotePort":50370},"msg":"incoming request"}
+{"level":30,"time":1776367874384,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-l","res":{"statusCode":204},"responseTime":0.32209999999031425,"msg":"request completed"}
+{"level":30,"time":1776367874384,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-m","req":{"method":"OPTIONS","url":"/tickets/group/3d63b0a7-be9d-4118-957f-964fa9858829","host":"localhost:3000","remoteAddress":"::1","remotePort":50363},"msg":"incoming request"}
+{"level":30,"time":1776367874385,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-m","res":{"statusCode":204},"responseTime":0.395699999993667,"msg":"request completed"}
+{"level":30,"time":1776367874390,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-n","req":{"method":"GET","url":"/tickets/group/8015e25e-a8d3-4601-8e82-6cd2c81108c9","host":"localhost:3000","remoteAddress":"::1","remotePort":50363},"msg":"incoming request"}
+{"level":30,"time":1776367874391,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-n","source":"/tickets/group/8015e25e-a8d3-4601-8e82-6cd2c81108c9","msg":"fetching from remote server"}
+{"level":30,"time":1776367874392,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-o","req":{"method":"GET","url":"/tickets/group/3d63b0a7-be9d-4118-957f-964fa9858829","host":"localhost:3000","remoteAddress":"::1","remotePort":50370},"msg":"incoming request"}
+{"level":30,"time":1776367874393,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-o","source":"/tickets/group/3d63b0a7-be9d-4118-957f-964fa9858829","msg":"fetching from remote server"}
+{"level":30,"time":1776367874589,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-o","msg":"response received"}
+{"level":30,"time":1776367874589,"pid":15140,"hostname":"DESKTOP-640V4IJ","msg":"✅ ÉXITO: [GET] /tickets/group/3d63b0a7-be9d-4118-957f-964fa9858829 - Status: 200 - Usuario: 4de164df-1fbf-4a22-9b3b-8719697a4e7e - Tiempo: 197.27ms"}
+{"level":30,"time":1776367874589,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-o","res":{"statusCode":200},"responseTime":197.27640000008978,"msg":"request completed"}
+{"level":30,"time":1776367874667,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-n","msg":"response received"}
+{"level":30,"time":1776367874667,"pid":15140,"hostname":"DESKTOP-640V4IJ","msg":"✅ ÉXITO: [GET] /tickets/group/8015e25e-a8d3-4601-8e82-6cd2c81108c9 - Status: 200 - Usuario: 4de164df-1fbf-4a22-9b3b-8719697a4e7e - Tiempo: 277.28ms"}
+{"level":30,"time":1776367874667,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-n","res":{"statusCode":200},"responseTime":277.3196000000462,"msg":"request completed"}
+{"level":30,"time":1776367876113,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-p","req":{"method":"GET","url":"/groups","host":"localhost:3000","remoteAddress":"::1","remotePort":50363},"msg":"incoming request"}
+{"level":30,"time":1776367876116,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-p","source":"/groups","msg":"fetching from remote server"}
+{"level":30,"time":1776367876118,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-q","req":{"method":"OPTIONS","url":"/users","host":"localhost:3000","remoteAddress":"::1","remotePort":50370},"msg":"incoming request"}
+{"level":30,"time":1776367876119,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-q","res":{"statusCode":204},"responseTime":0.6513000000268221,"msg":"request completed"}
+{"level":30,"time":1776367876121,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-r","req":{"method":"GET","url":"/users","host":"localhost:3000","remoteAddress":"::1","remotePort":50370},"msg":"incoming request"}
+{"level":30,"time":1776367876123,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-r","source":"/users","msg":"fetching from remote server"}
+{"level":30,"time":1776367876216,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-p","msg":"response received"}
+{"level":30,"time":1776367876217,"pid":15140,"hostname":"DESKTOP-640V4IJ","msg":"✅ ÉXITO: [GET] /groups - Status: 200 - Usuario: 4de164df-1fbf-4a22-9b3b-8719697a4e7e - Tiempo: 103.48ms"}
+{"level":30,"time":1776367876217,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-p","res":{"statusCode":200},"responseTime":103.50969999982044,"msg":"request completed"}
+{"level":30,"time":1776367876305,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-r","msg":"response received"}
+{"level":30,"time":1776367876306,"pid":15140,"hostname":"DESKTOP-640V4IJ","msg":"✅ ÉXITO: [GET] /users - Status: 200 - Usuario: 4de164df-1fbf-4a22-9b3b-8719697a4e7e - Tiempo: 184.65ms"}
+{"level":30,"time":1776367876306,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-r","res":{"statusCode":200},"responseTime":184.66280000004917,"msg":"request completed"}
+{"level":30,"time":1776367877184,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-s","req":{"method":"OPTIONS","url":"/groups/8015e25e-a8d3-4601-8e82-6cd2c81108c9/members","host":"localhost:3000","remoteAddress":"::1","remotePort":50370},"msg":"incoming request"}
+{"level":30,"time":1776367877185,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-s","res":{"statusCode":204},"responseTime":0.3033999998588115,"msg":"request completed"}
+{"level":30,"time":1776367877187,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-t","req":{"method":"GET","url":"/groups/8015e25e-a8d3-4601-8e82-6cd2c81108c9/members","host":"localhost:3000","remoteAddress":"::1","remotePort":50370},"msg":"incoming request"}
+{"level":30,"time":1776367877188,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-t","source":"/groups/8015e25e-a8d3-4601-8e82-6cd2c81108c9/members","msg":"fetching from remote server"}
+{"level":30,"time":1776367877289,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-t","msg":"response received"}
+{"level":30,"time":1776367877290,"pid":15140,"hostname":"DESKTOP-640V4IJ","msg":"✅ ÉXITO: [GET] /groups/8015e25e-a8d3-4601-8e82-6cd2c81108c9/members - Status: 200 - Usuario: 4de164df-1fbf-4a22-9b3b-8719697a4e7e - Tiempo: 103.09ms"}
+{"level":30,"time":1776367877290,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-t","res":{"statusCode":200},"responseTime":103.11790000018664,"msg":"request completed"}
+{"level":30,"time":1776367879277,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-u","req":{"method":"OPTIONS","url":"/groups/8015e25e-a8d3-4601-8e82-6cd2c81108c9/members/615ba3c0-ba8e-4630-a3b1-e9a547732109","host":"localhost:3000","remoteAddress":"::1","remotePort":50370},"msg":"incoming request"}
+{"level":30,"time":1776367879278,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-u","res":{"statusCode":204},"responseTime":0.3774000001139939,"msg":"request completed"}
+{"level":30,"time":1776367879279,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-v","req":{"method":"DELETE","url":"/groups/8015e25e-a8d3-4601-8e82-6cd2c81108c9/members/615ba3c0-ba8e-4630-a3b1-e9a547732109","host":"localhost:3000","remoteAddress":"::1","remotePort":50370},"msg":"incoming request"}
+{"level":30,"time":1776367879281,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-v","source":"/groups/8015e25e-a8d3-4601-8e82-6cd2c81108c9/members/615ba3c0-ba8e-4630-a3b1-e9a547732109","msg":"fetching from remote server"}
+{"level":30,"time":1776367879386,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-v","msg":"response received"}
+{"level":30,"time":1776367879387,"pid":15140,"hostname":"DESKTOP-640V4IJ","msg":"✅ ÉXITO: [DELETE] /groups/8015e25e-a8d3-4601-8e82-6cd2c81108c9/members/615ba3c0-ba8e-4630-a3b1-e9a547732109 - Status: 200 - Usuario: 4de164df-1fbf-4a22-9b3b-8719697a4e7e - Tiempo: 108.25ms"}
+{"level":30,"time":1776367879387,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-v","res":{"statusCode":200},"responseTime":108.27199999988079,"msg":"request completed"}
+{"level":30,"time":1776367879390,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-w","req":{"method":"GET","url":"/groups/8015e25e-a8d3-4601-8e82-6cd2c81108c9/members","host":"localhost:3000","remoteAddress":"::1","remotePort":50370},"msg":"incoming request"}
+{"level":30,"time":1776367879392,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-w","source":"/groups/8015e25e-a8d3-4601-8e82-6cd2c81108c9/members","msg":"fetching from remote server"}
+{"level":30,"time":1776367879496,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-w","msg":"response received"}
+{"level":30,"time":1776367879497,"pid":15140,"hostname":"DESKTOP-640V4IJ","msg":"✅ ÉXITO: [GET] /groups/8015e25e-a8d3-4601-8e82-6cd2c81108c9/members - Status: 200 - Usuario: 4de164df-1fbf-4a22-9b3b-8719697a4e7e - Tiempo: 106.73ms"}
+{"level":30,"time":1776367879497,"pid":15140,"hostname":"DESKTOP-640V4IJ","reqId":"req-w","res":{"statusCode":200},"responseTime":106.73979999986477,"msg":"request completed"}
+{"level":30,"time":1776368769916,"pid":9476,"hostname":"DESKTOP-640V4IJ","msg":"Server listening at http://[::1]:3000"}
+{"level":30,"time":1776368769919,"pid":9476,"hostname":"DESKTOP-640V4IJ","msg":"Server listening at http://127.0.0.1:3000"}
