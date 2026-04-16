@@ -7,7 +7,6 @@ const cors = require('@fastify/cors');
 const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
 
-
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 
@@ -161,37 +160,36 @@ fastify.addHook('onResponse', async (request, reply) => {
 });
 
 // ==========================================
-// 🛣️ RUTAS PROXY A MICROSERVICIOS
+// 🛣️ RUTAS PROXY A MICROSERVICIOS (EN LA NUBE)
 // ==========================================
 fastify.register(proxy, {
-    upstream: 'http://localhost:3001',
+    upstream: 'https://erp-users.onrender.com', // URL de microservicio Users
     prefix: '/auth',
     rewritePrefix: '/auth'
 });
 
 fastify.register(proxy, {
-    upstream: 'http://localhost:3001',
+    upstream: 'https://erp-users.onrender.com', // URL de microservicio Users
     prefix: '/users', 
     rewritePrefix: '/users'
 });
 
 fastify.register(proxy, {
-    upstream: 'http://localhost:3002',
+    upstream: 'https://tickets-r9og.onrender.com', // URL de microservicio Tickets
     prefix: '/tickets',
     rewritePrefix: '/tickets'
 });
 
 fastify.register(proxy, {
-    upstream: 'http://localhost:3003',
+    upstream: 'https://groups-aycz.onrender.com', // URL de microservicio Groups
     prefix: '/groups',
     rewritePrefix: '/groups'
 });
 
 const start = async () => {
     try {
-        // Render requiere que escuches en el host '0.0.0.0' para ser accesible externamente
         await fastify.listen({ 
-            port: process.env.PORT || 3000, // Toma el puerto de Render o usa 3000 por defecto [cite: 315, 355, 380, 420]
+            port: process.env.PORT || 3000, 
             host: '0.0.0.0' 
         });
         console.log(`Servidor iniciado en puerto ${process.env.PORT || 3000}`);
