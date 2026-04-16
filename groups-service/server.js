@@ -86,17 +86,50 @@ fastify.get('/groups', async (request, reply) => {
         const userId = request.headers['x-user-id'];
         if (!userId) return reply.code(403).send(formatResponse(403, 'SxGR403', { message: 'Usuario no identificado' }));
 
-        const { data, error } = await supabase
+        const { data: memberData, error: memberError } = await supabase
             .from('grupo_miembros')
-            .select(`
-                fecha_unido,
-                grupos ( id, nombre, descripcion, categoria, nivel, profesor, imagen_url, creador_id, creado_en )
-            `)
+            .select('grupo_id')
             .eq('usuario_id', userId);
 
-        if (error) throw error;
+        if (memberError) throw memberError;
 
-        const gruposFormateados = data.map(item => item.grupos);
+        if (!memberData || memberData.length === 0) {
+            return reply.code(200).send(formatResponse(200, 'SxGR200', []));
+        }
+
+        const groupIds = memberData.map(m => m.grupo_id);
+        const { data: groupData, error: groupError } = await supabase
+            .from('grupos')
+            .select(`
+                id, nombre, descripcion, categoria, nivel, profesor, imagen_url, creador_id, creado_en,
+                grupo_miembros (count)
+            `)
+            .in('id', groupIds);
+
+        if (groupError) throw groupError;
+        const { data: ticketData, error: ticketError } = await supabase
+            .from('tickets')
+            .select('grupo_id')
+            .in('grupo_id', groupIds);
+            
+        if (ticketError) {
+             fastify.log.warn("No se pudieron cargar los tickets: ", ticketError);
+   
+        }
+
+        const gruposFormateados = groupData.map(g => {
+            const memberCount = g.grupo_miembros?.[0]?.count || 0;
+            const ticketCount = ticketData ? ticketData.filter(t => t.grupo_id === g.id).length : 0;
+            
+            const { grupo_miembros, ...cleanGroup } = g; 
+
+            return {
+                ...cleanGroup,
+                miembros_count: memberCount,
+                tickets_count: ticketCount
+            };
+        });
+
         return reply.code(200).send(formatResponse(200, 'SxGR200', gruposFormateados));
 
     } catch (error) {
