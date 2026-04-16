@@ -189,8 +189,12 @@ fastify.register(proxy, {
 
 const start = async () => {
     try {
-        await fastify.listen({ port: process.env.PORT || 3000 });
-        console.log(`API Gateway corriendo en el puerto ${process.env.PORT || 3000}`);
+        // Render requiere que escuches en el host '0.0.0.0' para ser accesible externamente
+        await fastify.listen({ 
+            port: process.env.PORT || 3000, // Toma el puerto de Render o usa 3000 por defecto [cite: 315, 355, 380, 420]
+            host: '0.0.0.0' 
+        });
+        console.log(`Servidor iniciado en puerto ${process.env.PORT || 3000}`);
     } catch (err) {
         fastify.log.error(err);
         process.exit(1);

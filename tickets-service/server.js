@@ -200,8 +200,11 @@ fastify.get('/tickets/user/:userId', async (request, reply) => {
 
 const start = async () => {
     try {
-        await fastify.listen({ port: process.env.PORT || 3002 });
-        console.log(`Microservicio de Tickets corriendo en el puerto ${process.env.PORT || 3002}`);
+        await fastify.listen({ 
+            port: process.env.PORT || 3000,
+            host: '0.0.0.0' 
+        });
+        console.log(`Servidor iniciado en puerto ${process.env.PORT || 3000}`);
     } catch (err) {
         fastify.log.error(err);
         process.exit(1);
