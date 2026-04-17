@@ -159,62 +159,35 @@ fastify.addHook('onResponse', async (request, reply) => {
     }
 });
 
+// ==========================================
+// 🛣️ RUTAS PROXY (RED PRIVADA DE RENDER)
+// ==========================================
 
-
+// 1. Microservicio de Usuarios (¡Este ya lo tengo exacto gracias a tu foto!)
 fastify.register(proxy, {
-    upstream: 'https://erp-users.onrender.com', 
+    upstream: 'http://srv-d7gn26vlk1mc73968uag:10000', 
     prefix: '/auth',
-    rewritePrefix: '/auth',
-    replyOptions: {
-        rewriteRequestHeaders: (request, headers) => {
-            const forward = { ...headers };
-            forward.host = 'erp-users.onrender.com';
-            delete forward['content-length']; 
-            return forward;
-        }
-    }
+    rewritePrefix: '/auth'
 });
 
 fastify.register(proxy, {
-    upstream: 'https://erp-users.onrender.com', 
+    upstream: 'http://srv-d7gn26vlk1mc73968uag:10000', 
     prefix: '/users', 
-    rewritePrefix: '/users',
-    replyOptions: {
-        rewriteRequestHeaders: (request, headers) => {
-            const forward = { ...headers };
-            forward.host = 'erp-users.onrender.com';
-            delete forward['content-length']; 
-            return forward;
-        }
-    }
+    rewritePrefix: '/users'
 });
 
+// 2. Microservicio de Tickets (⚠️ REEMPLAZA EL ID AQUÍ)
 fastify.register(proxy, {
-    upstream: 'https://tickets-r9og.onrender.com', 
+    upstream: 'http://srv-TU_ID_DE_TICKETS_AQUI:10000', 
     prefix: '/tickets',
-    rewritePrefix: '/tickets',
-    replyOptions: {
-        rewriteRequestHeaders: (request, headers) => {
-            const forward = { ...headers };
-            forward.host = 'tickets-r9og.onrender.com';
-            delete forward['content-length']; 
-            return forward;
-        }
-    }
+    rewritePrefix: '/tickets'
 });
 
+// 3. Microservicio de Grupos (⚠️ REEMPLAZA EL ID AQUÍ)
 fastify.register(proxy, {
-    upstream: 'https://groups-aycz.onrender.com', 
+    upstream: 'http://srv-TU_ID_DE_GRUPOS_AQUI:10000', 
     prefix: '/groups',
-    rewritePrefix: '/groups',
-    replyOptions: {
-        rewriteRequestHeaders: (request, headers) => {
-            const forward = { ...headers };
-            forward.host = 'groups-aycz.onrender.com';
-            delete forward['content-length']; 
-            return forward;
-        }
-    }
+    rewritePrefix: '/groups'
 });
 
 const start = async () => {
