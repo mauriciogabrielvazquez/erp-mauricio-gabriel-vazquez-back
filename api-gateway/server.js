@@ -163,29 +163,48 @@ fastify.register(proxy, {
     upstream: 'https://erp-users.onrender.com', 
     prefix: '/auth',
     rewritePrefix: '/auth',
-    // Le decimos a Render que sí vamos al edificio correcto
-    replyOptions: { rewriteRequestHeaders: (req, headers) => { headers.host = 'erp-users.onrender.com'; return headers; } }
+    replyOptions: { 
+        rewriteRequestHeaders: (request, headers) => {
+            const { host, ...forwardHeaders } = headers;
+            return forwardHeaders;
+        } 
+    }
 });
 
 fastify.register(proxy, {
     upstream: 'https://erp-users.onrender.com', 
     prefix: '/users', 
     rewritePrefix: '/users',
-    replyOptions: { rewriteRequestHeaders: (req, headers) => { headers.host = 'erp-users.onrender.com'; return headers; } }
+    replyOptions: { 
+        rewriteRequestHeaders: (request, headers) => {
+            const { host, ...forwardHeaders } = headers;
+            return forwardHeaders;
+        } 
+    }
 });
 
 fastify.register(proxy, {
     upstream: 'https://tickets-r9og.onrender.com', 
     prefix: '/tickets',
     rewritePrefix: '/tickets',
-    replyOptions: { rewriteRequestHeaders: (req, headers) => { headers.host = 'tickets-r9og.onrender.com'; return headers; } }
+    replyOptions: { 
+        rewriteRequestHeaders: (request, headers) => {
+            const { host, ...forwardHeaders } = headers;
+            return forwardHeaders;
+        } 
+    }
 });
 
 fastify.register(proxy, {
     upstream: 'https://groups-aycz.onrender.com', 
     prefix: '/groups',
     rewritePrefix: '/groups',
-    replyOptions: { rewriteRequestHeaders: (req, headers) => { headers.host = 'groups-aycz.onrender.com'; return headers; } }
+    replyOptions: { 
+        rewriteRequestHeaders: (request, headers) => {
+            const { host, ...forwardHeaders } = headers;
+            return forwardHeaders;
+        } 
+    }
 });
 
 const start = async () => {
