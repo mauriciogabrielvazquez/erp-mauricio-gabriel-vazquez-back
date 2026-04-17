@@ -159,15 +159,19 @@ fastify.addHook('onResponse', async (request, reply) => {
     }
 });
 
+
+
 fastify.register(proxy, {
     upstream: 'https://erp-users.onrender.com', 
     prefix: '/auth',
     rewritePrefix: '/auth',
-    replyOptions: { 
+    replyOptions: {
         rewriteRequestHeaders: (request, headers) => {
-            const { host, ...forwardHeaders } = headers;
-            return forwardHeaders;
-        } 
+            const forward = { ...headers };
+            forward.host = 'erp-users.onrender.com';
+            delete forward['content-length']; 
+            return forward;
+        }
     }
 });
 
@@ -175,11 +179,13 @@ fastify.register(proxy, {
     upstream: 'https://erp-users.onrender.com', 
     prefix: '/users', 
     rewritePrefix: '/users',
-    replyOptions: { 
+    replyOptions: {
         rewriteRequestHeaders: (request, headers) => {
-            const { host, ...forwardHeaders } = headers;
-            return forwardHeaders;
-        } 
+            const forward = { ...headers };
+            forward.host = 'erp-users.onrender.com';
+            delete forward['content-length']; 
+            return forward;
+        }
     }
 });
 
@@ -187,11 +193,13 @@ fastify.register(proxy, {
     upstream: 'https://tickets-r9og.onrender.com', 
     prefix: '/tickets',
     rewritePrefix: '/tickets',
-    replyOptions: { 
+    replyOptions: {
         rewriteRequestHeaders: (request, headers) => {
-            const { host, ...forwardHeaders } = headers;
-            return forwardHeaders;
-        } 
+            const forward = { ...headers };
+            forward.host = 'tickets-r9og.onrender.com';
+            delete forward['content-length']; 
+            return forward;
+        }
     }
 });
 
@@ -199,11 +207,13 @@ fastify.register(proxy, {
     upstream: 'https://groups-aycz.onrender.com', 
     prefix: '/groups',
     rewritePrefix: '/groups',
-    replyOptions: { 
+    replyOptions: {
         rewriteRequestHeaders: (request, headers) => {
-            const { host, ...forwardHeaders } = headers;
-            return forwardHeaders;
-        } 
+            const forward = { ...headers };
+            forward.host = 'groups-aycz.onrender.com';
+            delete forward['content-length']; 
+            return forward;
+        }
     }
 });
 
