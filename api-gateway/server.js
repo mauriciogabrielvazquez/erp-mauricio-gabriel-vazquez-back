@@ -159,31 +159,33 @@ fastify.addHook('onResponse', async (request, reply) => {
     }
 });
 
-// ==========================================
-// 🛣️ RUTAS PROXY A MICROSERVICIOS (EN LA NUBE)
-// ==========================================
 fastify.register(proxy, {
-    upstream: 'https://erp-users.onrender.com', // URL de microservicio Users
+    upstream: 'https://erp-users.onrender.com', 
     prefix: '/auth',
-    rewritePrefix: '/auth'
+    rewritePrefix: '/auth',
+    // Le decimos a Render que sí vamos al edificio correcto
+    replyOptions: { rewriteRequestHeaders: (req, headers) => { headers.host = 'erp-users.onrender.com'; return headers; } }
 });
 
 fastify.register(proxy, {
-    upstream: 'https://erp-users.onrender.com', // URL de microservicio Users
+    upstream: 'https://erp-users.onrender.com', 
     prefix: '/users', 
-    rewritePrefix: '/users'
+    rewritePrefix: '/users',
+    replyOptions: { rewriteRequestHeaders: (req, headers) => { headers.host = 'erp-users.onrender.com'; return headers; } }
 });
 
 fastify.register(proxy, {
-    upstream: 'https://tickets-r9og.onrender.com', // URL de microservicio Tickets
+    upstream: 'https://tickets-r9og.onrender.com', 
     prefix: '/tickets',
-    rewritePrefix: '/tickets'
+    rewritePrefix: '/tickets',
+    replyOptions: { rewriteRequestHeaders: (req, headers) => { headers.host = 'tickets-r9og.onrender.com'; return headers; } }
 });
 
 fastify.register(proxy, {
-    upstream: 'https://groups-aycz.onrender.com', // URL de microservicio Groups
+    upstream: 'https://groups-aycz.onrender.com', 
     prefix: '/groups',
-    rewritePrefix: '/groups'
+    rewritePrefix: '/groups',
+    replyOptions: { rewriteRequestHeaders: (req, headers) => { headers.host = 'groups-aycz.onrender.com'; return headers; } }
 });
 
 const start = async () => {
